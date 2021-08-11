@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./async.js"></script>
+    <script>
+        const getData = () => new Promise(res => setTimeout(() => res(1), 1000))
+        //首先先写一个简单的generate函数
+        function * demo() {
+            const data1 = yield getData()
+            console.log(data1);
+            const data2 = yield getData()
+            console.log(data2);
+            return 'success'
+        }
+
+        //创建一个foo的async函数，由asyncDemo代替*，接受demo函数作为参数
+        const foo = asyncDemo(demo)
+        //需要实现,foo是执行完后return一个promise对象，可执行then方法
+        foo().then(res => {
+            console.log(res)
+        })
+    </script>
+</body>
+</html>
