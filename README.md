@@ -9,3 +9,4 @@
 7、手写vue-router
 8、微前端qiankun sdk的使用及解析
 9、个人网站搭建
+10、babel实现
